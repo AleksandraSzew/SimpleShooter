@@ -16,6 +16,7 @@ AShooterCharacter::AShooterCharacter()
 void AShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	Health = MaxHealth;
 	
 }
 
@@ -71,4 +72,14 @@ void AShooterCharacter::LookRightRate(float axisValue)
 void AShooterCharacter::Shoot()
 {
 	Gun->PullTrigger();
+}
+float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
+{
+	float DamageApplied = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	
+	float DamageToApply = FMath::Min(Health, DamageApplied);
+	Health -= DamageToApply;
+
+	UE_LOG(LogTemp, Warning, TEXT("Health left %f"), Health);
+	return DamageToApply;	
 }
