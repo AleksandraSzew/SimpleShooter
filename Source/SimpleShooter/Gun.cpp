@@ -39,6 +39,7 @@ void AGun::PullTrigger()
 
 	APawn* OwnerPawn = Cast<APawn>(GetOwner());
 	if (OwnerPawn == nullptr)	return;
+	
 	AController* OwnerCOntroller = OwnerPawn->GetController();
 	if (OwnerCOntroller == nullptr)	return;
 
@@ -46,10 +47,8 @@ void AGun::PullTrigger()
 	FRotator Rotation;
 
 	OwnerCOntroller->GetPlayerViewPoint(Location, Rotation);
-	
 	FVector End = Location + Rotation.Vector() * MaxRange;
 
-	
 	FHitResult Hit;
 	bool bSuccess = GetWorld()->LineTraceSingleByChannel(Hit, Location, End, ECollisionChannel::ECC_GameTraceChannel1);
 	
@@ -58,5 +57,14 @@ void AGun::PullTrigger()
 		FVector ShotDirection = -Rotation.Vector();
 		//DrawDebugPoint(GetWorld(), Hit.Location, 20, FColor::Red, true);
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect,  Hit.Location, ShotDirection.Rotation());
+
+		AActor* HitActor = Hit.GetActor();
+		if (HitActor != nullptr)
+			{
+			FPointDamageEvent DamageEvent(Damage, Hit, ShotDirection, nullptr);
+			HitActor->TakeDamage(Damage, DamageEvent, OwnerCOntroller, this);
+			}
+
+
 	}
 }
