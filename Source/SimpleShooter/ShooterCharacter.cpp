@@ -44,18 +44,14 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
 
-
 	//controller
 	PlayerInputComponent->BindAxis(TEXT("LookUpRete"), this, &AShooterCharacter::LookUpRate);
 	PlayerInputComponent->BindAxis(TEXT("LookRightRete"), this, &AShooterCharacter::LookRightRate);
 }
-
-
 void AShooterCharacter::MoveForward(float axisValue)
 {
 	AddMovementInput(GetActorForwardVector() * axisValue);
 }
-
 void AShooterCharacter::MoveRight(float axisValue)
 {
 	AddMovementInput(GetActorRightVector() * axisValue);
@@ -82,4 +78,9 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 
 	UE_LOG(LogTemp, Warning, TEXT("Health left %f"), Health);
 	return DamageToApply;	
+}
+
+bool AShooterCharacter::IsCharacterDead() const
+{
+	return Health <=0;
 }
