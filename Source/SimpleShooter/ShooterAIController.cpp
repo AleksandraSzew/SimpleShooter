@@ -12,10 +12,16 @@
 
 	APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	
+	if (AIBehavior)
+	{
+		RunBehaviorTree(AIBehavior);
+	}
+	
 }
 
  void AShooterAIController::Tick(float DeltaTime)
  {
+	 /*
 	 Super::Tick(DeltaTime);
 
 	 APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
@@ -32,6 +38,8 @@
 		 ClearFocus(EAIFocusPriority::Gameplay);
 		 StopMovement();
 	 }
-		
+		*/
 	 
+
+
  }
