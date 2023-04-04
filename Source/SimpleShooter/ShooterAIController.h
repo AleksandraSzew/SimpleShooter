@@ -13,7 +13,9 @@ UCLASS()
 class SIMPLESHOOTER_API AShooterAIController : public AAIController
 {
 	GENERATED_BODY()
-
+private:
+	UPROPERTY(EditAnywhere)
+		float DistanceToPlayer = 200;
 protected:
 	virtual void BeginPlay() override;
 	
