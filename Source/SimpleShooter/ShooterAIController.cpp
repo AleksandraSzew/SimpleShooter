@@ -16,7 +16,7 @@
 	if (AIBehavior != nullptr)
 	{
 		RunBehaviorTree(AIBehavior);
-
+		GetBlackboardComponent()->SetValueAsVector(TEXT("StartLocation"), GetPawn()->GetActorLocation());
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());	
 	}
 	
