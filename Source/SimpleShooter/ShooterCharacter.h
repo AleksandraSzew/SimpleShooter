@@ -16,7 +16,7 @@ class SIMPLESHOOTER_API AShooterCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	AShooterCharacter();
-
+	void Shoot();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -36,7 +36,6 @@ private:
 	void MoveRight(float axisValue);
 	void LookUpRate(float axisValue);
 	void LookRightRate(float axisValue);
-	void Shoot();
 
 	UPROPERTY(EditAnywhere)
 		float RotationRate = 7;
