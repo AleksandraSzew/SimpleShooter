@@ -3,7 +3,8 @@
 
 #include "KillEmAllGameMode.h"
 #include "SimpleShooterGameModeBase.h"
-
+#include "EngineUtils.h"
+#include "GameFramework/Controller.h"
 void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
 {
 	Super::PawnKilled(PawnKilled);
@@ -13,4 +14,15 @@ void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
 	{
 		PlayerController->GameHasEnded(nullptr, false);
 	}
+}
+
+void AKillEmAllGameMode::EndGame(bool bIsPlayerWinner)
+{
+	for (AController* Controller : TActorRange<AController>(GetWorld()))
+	{
+		bool bIsWinner = Controller->IsPlayerController() == bIsPlayerWinner;
+		Controller->GameHasEnded(Controller->GetPawn(), bIsWinner);
+	}
+
+
 }
