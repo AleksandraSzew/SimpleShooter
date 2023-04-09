@@ -22,6 +22,6 @@ protected:
 public:
 	UPROPERTY(EditAnywhere)
 	class UBehaviorTree* AIBehavior;
-
+	bool IsDead() const;
 };
 
