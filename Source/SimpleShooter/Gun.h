@@ -39,4 +39,7 @@ private:
 		float MaxRange = 1000;
 	UPROPERTY(EditAnywhere)
 		float Damage = 10;
+
+	bool GunTrace(FHitResult& Hit, FVector& ShotDirection);
+	AController* GetOwnerController();
 };
