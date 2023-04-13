@@ -99,3 +99,9 @@ bool AShooterCharacter::IsCharacterDead() const
 {
 	return Health <=0;
 }
+
+float AShooterCharacter::getHealthPercantage() const
+{
+
+	return Health / MaxHealth;
+}

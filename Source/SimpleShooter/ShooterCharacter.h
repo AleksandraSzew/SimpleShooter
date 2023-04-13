@@ -31,6 +31,8 @@ public:
 
 	UFUNCTION(BlueprintPure)
 		bool IsCharacterDead() const;
+	UFUNCTION(BlueprintPure)
+		float getHealthPercantage() const;
 private:
 	void MoveForward(float axisValue);
 	void MoveRight(float axisValue);
