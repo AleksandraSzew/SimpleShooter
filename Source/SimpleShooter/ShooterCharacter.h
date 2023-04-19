@@ -18,7 +18,7 @@ public:
 	AShooterCharacter();
 	void Shoot();
 	void SwapWeapon();
-
+	void ThrowGrenade();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

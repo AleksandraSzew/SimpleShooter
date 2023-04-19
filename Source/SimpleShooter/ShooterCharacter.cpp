@@ -47,6 +47,7 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
 	PlayerInputComponent->BindAction(TEXT("SwapWeapon"), EInputEvent::IE_Pressed, this, &AShooterCharacter::SwapWeapon);
+	PlayerInputComponent->BindAction(TEXT("Grenade"), EInputEvent::IE_Pressed, this, &AShooterCharacter::ThrowGrenade);
 
 	//controller
 	PlayerInputComponent->BindAxis(TEXT("LookUpRete"), this, &AShooterCharacter::LookUpRate);
@@ -113,4 +114,9 @@ void AShooterCharacter::SwapWeapon()
 	UE_LOG(LogTemp, Warning, TEXT("Swapping Weapon"));
 	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SwapWeaponSound, this->GetTargetLocation());
 	
+}
+
+void AShooterCharacter::ThrowGrenade()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Grenade!"));
 }
