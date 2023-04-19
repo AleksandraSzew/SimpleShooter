@@ -5,6 +5,7 @@
 #include "Gun.h"
 #include "Components/CapsuleComponent.h"
 #include "SimpleShooterGameModeBase.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -110,4 +111,6 @@ float AShooterCharacter::getHealthPercantage() const
 void AShooterCharacter::SwapWeapon()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Swapping Weapon"));
+	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), SwapWeaponSound, this->GetTargetLocation());
+	
 }

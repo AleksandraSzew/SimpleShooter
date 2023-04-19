@@ -54,4 +54,6 @@ UPROPERTY(EditAnywhere)
 		float MaxHealth = 100;
 	UPROPERTY(VisibleAnywhere)
 		float Health;
+	UPROPERTY(EditAnywhere)
+		USoundBase* SwapWeaponSound;
 };
