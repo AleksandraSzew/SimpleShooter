@@ -90,6 +90,7 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 		{
 			GameMode->PawnKilled(this);
 		}
+		GetMesh()->SetSimulatePhysics(true);
 		DetachFromControllerPendingDestroy();
 	}
 	return DamageToApply;	
