@@ -45,6 +45,7 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis(TEXT("LookRight"), this, &APawn::AddControllerYawInput);
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
+	PlayerInputComponent->BindAction(TEXT("SwapWeapon"), EInputEvent::IE_Pressed, this, &AShooterCharacter::SwapWeapon);
 
 	//controller
 	PlayerInputComponent->BindAxis(TEXT("LookUpRete"), this, &AShooterCharacter::LookUpRate);
@@ -90,7 +91,6 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 		{
 			GameMode->PawnKilled(this);
 		}
-		GetMesh()->SetSimulatePhysics(true);
 		DetachFromControllerPendingDestroy();
 	}
 	return DamageToApply;	
@@ -105,4 +105,9 @@ float AShooterCharacter::getHealthPercantage() const
 {
 
 	return Health / MaxHealth;
+}
+
+void AShooterCharacter::SwapWeapon()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Swapping Weapon"));
 }

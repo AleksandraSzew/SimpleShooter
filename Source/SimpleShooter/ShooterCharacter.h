@@ -17,6 +17,8 @@ public:
 	// Sets default values for this character's properties
 	AShooterCharacter();
 	void Shoot();
+	void SwapWeapon();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -39,7 +41,7 @@ private:
 	void LookUpRate(float axisValue);
 	void LookRightRate(float axisValue);
 
-	UPROPERTY(EditAnywhere)
+UPROPERTY(EditAnywhere)
 		float RotationRate = 7;
 
 	UPROPERTY(EditDefaultsOnly)
