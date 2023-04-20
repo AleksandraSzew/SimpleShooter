@@ -121,11 +121,18 @@ void AShooterCharacter::ThrowGrenade()
 {	
 	if (GrenadeClass)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Grenade!"));
 		Granade = GetWorld()->SpawnActor<AGrenade>(GrenadeClass);
 		if (Granade)
 		{
-			Granade->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,FName("hand_r"));
+			
+			if (ThrowAnimation)
+				{	
+					GetMesh()->PlayAnimation(ThrowAnimation, false);
+				}
+				
+			
+			Granade->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,FName("canon_barrel_C"));
+		
 		}
 	}
 	

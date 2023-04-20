@@ -50,6 +50,8 @@ private:
 		TSubclassOf<AGun> GunClass;
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<class AGrenade> GrenadeClass;
+	UPROPERTY(EditDefaultsOnly)
+		class UAnimMontage* ThrowAnimation;
 	UPROPERTY()
 		AGun* Gun;
 	UPROPERTY(EditDefaultsOnly)
