@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Grenade.h"
 #include "GameFramework/Character.h"
 #include "ShooterCharacter.generated.h"
 
@@ -35,21 +36,22 @@ public:
 		bool IsCharacterDead() const;
 	UFUNCTION(BlueprintPure)
 		float getHealthPercantage() const;
+	UPROPERTY(BlueprintReadWrite)
+		class AGrenade* Granade;
 private:
 	void MoveForward(float axisValue);
 	void MoveRight(float axisValue);
 	void LookUpRate(float axisValue);
 	void LookRightRate(float axisValue);
-
-UPROPERTY(EditAnywhere)
+	
+	UPROPERTY(EditAnywhere)
 		float RotationRate = 7;
-
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<AGun> GunClass;
-
+	UPROPERTY(EditDefaultsOnly)
+		TSubclassOf<class AGrenade> GrenadeClass;
 	UPROPERTY()
 		AGun* Gun;
-
 	UPROPERTY(EditDefaultsOnly)
 		float MaxHealth = 100;
 	UPROPERTY(VisibleAnywhere)

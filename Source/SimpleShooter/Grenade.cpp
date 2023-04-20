@@ -2,7 +2,7 @@
 
 
 #include "Grenade.h"
-
+#include "Components/SkeletalMeshComponent.h"
 // Sets default values
 AGrenade::AGrenade()
 {

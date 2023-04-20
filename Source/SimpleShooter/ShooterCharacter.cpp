@@ -3,6 +3,7 @@
 
 #include "ShooterCharacter.h"
 #include "Gun.h"
+#include "Grenade.h"
 #include "Components/CapsuleComponent.h"
 #include "SimpleShooterGameModeBase.h"
 #include <Kismet/GameplayStatics.h>
@@ -117,6 +118,16 @@ void AShooterCharacter::SwapWeapon()
 }
 
 void AShooterCharacter::ThrowGrenade()
-{
-	UE_LOG(LogTemp, Warning, TEXT("Grenade!"));
+{	
+	if (GrenadeClass)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Grenade!"));
+		Granade = GetWorld()->SpawnActor<AGrenade>(GrenadeClass);
+		if (Granade)
+		{
+			Granade->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,FName("hand_r"));
+		}
+	}
+	
+	
 }
