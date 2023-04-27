@@ -23,6 +23,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UFUNCTION(BlueprintCallable)
+	void OnGrenadeRelease();
 
 public:	
 	// Called every frame
@@ -38,6 +40,7 @@ public:
 		float getHealthPercantage() const;
 	UPROPERTY(BlueprintReadWrite)
 		class AGrenade* Granade;
+	
 private:
 	void MoveForward(float axisValue);
 	void MoveRight(float axisValue);

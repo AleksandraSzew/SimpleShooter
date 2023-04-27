@@ -23,4 +23,13 @@ void AGrenade::BeginPlay()
 	
 }
 
+void AGrenade::OnReleased(FVector ForwardVector)
+{
+	ForwardVector *= 2500.f;
+	Mesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	Mesh->SetSimulatePhysics(true);
+	Mesh->SetAllPhysicsLinearVelocity(FVector::ZeroVector);
+	Mesh->AddImpulse(ForwardVector);
+}
 

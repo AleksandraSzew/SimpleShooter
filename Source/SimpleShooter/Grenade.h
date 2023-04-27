@@ -20,7 +20,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	
+	void OnReleased(FVector ForwardVector);
 private:
 	UPROPERTY(VisibleAnywhere)
 		USceneComponent* Root;

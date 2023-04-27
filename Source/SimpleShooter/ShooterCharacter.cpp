@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "SimpleShooterGameModeBase.h"
 #include <Kismet/GameplayStatics.h>
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -134,7 +135,15 @@ void AShooterCharacter::ThrowGrenade()
 			Granade->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,FName("canon_barrel_C"));
 		
 		}
+		OnGrenadeRelease();
 	}
 	
 	
+}
+void AShooterCharacter::OnGrenadeRelease()
+{
+	if (Granade)
+	{
+		Granade->OnReleased(UKismetMathLibrary::GetForwardVector(GetControlRotation()));			
+	}
 }
