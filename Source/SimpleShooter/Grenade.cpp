@@ -23,9 +23,9 @@ void AGrenade::BeginPlay()
 	
 }
 
-void AGrenade::OnReleased(FVector ForwardVector)
+void AGrenade::OnReleased(FVector ForwardVector, float Power)
 {
-	ForwardVector *= 2500.f;
+	ForwardVector *= Power;
 	Mesh->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
 	Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Mesh->SetSimulatePhysics(true);

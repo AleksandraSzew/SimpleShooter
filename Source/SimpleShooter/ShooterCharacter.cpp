@@ -128,14 +128,14 @@ void AShooterCharacter::ThrowGrenade()
 			
 			if (ThrowAnimation)
 				{	
-					GetMesh()->PlayAnimation(ThrowAnimation, false);
+				PlayAnimMontage(ThrowAnimation, 1, NAME_None);
 				}
 				
 			
 			Granade->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetIncludingScale,FName("canon_barrel_C"));
 		
 		}
-		OnGrenadeRelease();
+		
 	}
 	
 	
@@ -144,6 +144,6 @@ void AShooterCharacter::OnGrenadeRelease()
 {
 	if (Granade)
 	{
-		Granade->OnReleased(UKismetMathLibrary::GetForwardVector(GetControlRotation()));			
+		Granade->OnReleased(UKismetMathLibrary::GetForwardVector(GetControlRotation()), GrenadePower);
 	}
 }

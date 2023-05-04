@@ -63,4 +63,6 @@ private:
 		float Health;
 	UPROPERTY(EditAnywhere)
 		USoundBase* SwapWeaponSound;
+	UPROPERTY(EditAnywhere)
+		float GrenadePower = 2500.f;
 };
