@@ -21,11 +21,15 @@ protected:
 
 public:	
 	void OnReleased(FVector FVector, float Power);
+	void Explode();
 private:
 	UPROPERTY(VisibleAnywhere)
 		USceneComponent* Root;
 	UPROPERTY(VisibleAnywhere)
 		USkeletalMeshComponent* Mesh;
-	
+	UPROPERTY(EditAnywhere)
+		class USphereComponent* GrenadeSphere;
+	UPROPERTY(EditAnywhere)
+		float FuseLenght = 3.0f;
 
 };
